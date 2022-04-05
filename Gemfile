@@ -48,9 +48,13 @@ gem "devise", "~> 4.8", ">= 4.8.1"
 
 gem "money", "~> 6.16"
 
+gem 'monetize', '~> 1.12.0'
+
 gem "nokogiri", "~> 1.13.3"
 
 gem "httparty", "~> 0.20.0"
+
+gem 'sidekiq', '~> 6.0.0'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
