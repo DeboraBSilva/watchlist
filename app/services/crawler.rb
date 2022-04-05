@@ -13,9 +13,12 @@ class Crawler < ApplicationService
   private
 
   def asset_value
-    Nokogiri::HTML.parse(HTTParty.get("https://statusinvest.com.br/acoes/#{@asset_symbol}"))
+    document = Nokogiri::HTML.parse(HTTParty.get("https://statusinvest.com.br/acoes/#{@asset_symbol}"))
       .css('div.special')
-      .css('strong.value')
-      .text
+    currency = document.css('span.icon').map(&:text).first
+    value = document.css('strong.value').text
+    response = "#{currency} #{value}"
+    raise "Not valid" if response.blank?
+    response
   end
 end
