@@ -13,7 +13,7 @@ class Crawler < ApplicationService
   private
 
   def asset_value
-    document = Nokogiri::HTML.parse(HTTParty.get("https://statusinvest.com.br/acoes/#{@asset_symbol}"))
+    document = Nokogiri::HTML.parse(HTTParty.get("https://statusinvest.com.br/acoes/#{@asset_symbol}").body)
       .css('div.special')
     currency = document.css('span.icon').map(&:text).first
     value = document.css('strong.value').text
