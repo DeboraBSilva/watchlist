@@ -18,7 +18,7 @@ class Crawler < ApplicationService
     currency = document.css('span.icon').map(&:text).first
     value = document.css('strong.value').text
     response = "#{currency} #{value}"
-    raise "Not valid" if response.blank?
+    raise "Asset not found" if response.blank?
     response
   end
 end
