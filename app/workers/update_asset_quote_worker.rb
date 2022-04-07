@@ -3,6 +3,6 @@ class UpdateAssetQuoteWorker
   sidekiq_options retry: 5
 
   def perform(asset_symbol)
-    AssetQuote.call(asset_symbol)
+    CreateAssetQuote.call(asset_symbol)
   end
 end
