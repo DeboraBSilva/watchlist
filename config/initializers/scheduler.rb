@@ -4,9 +4,6 @@ return if defined?(Rails::Console) || Rails.env.test? || File.split($PROGRAM_NAM
 
 scheduler = Rufus::Scheduler.singleton
 
-scheduler.every  '5m' do
-  puts 'scheduler rodou'
+scheduler.every  '1m' do
   UpdateQuotes.call
 end
-
-# scheduler.join
