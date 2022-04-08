@@ -2,8 +2,8 @@
 
 class UpdateQuotes < ApplicationService
   def call
-    Asset.all.each do |asset|
-      priority = WalletItem.find_by(asset: asset) ? :high : :default
+    Asset.includes(:wallet_items).all.each do |asset|
+      priority = asset.wallet_items.present? ? :high : :default
       UpdateAssetQuoteWorker.set(queue: priority).perform_async(asset.symbol)
     end
   end
