@@ -48,6 +48,14 @@ gem "devise", "~> 4.8", ">= 4.8.1"
 
 gem "money", "~> 6.16"
 
+gem 'monetize', '~> 1.12.0'
+
+gem "nokogiri", "~> 1.13.3"
+
+gem "httparty", "~> 0.20.0"
+
+gem 'sidekiq', '~> 6.0.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -57,6 +65,7 @@ gem "money", "~> 6.16"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
