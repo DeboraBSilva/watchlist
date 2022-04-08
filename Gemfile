@@ -55,6 +55,7 @@ gem "nokogiri", "~> 1.13.3"
 gem "httparty", "~> 0.20.0"
 
 gem 'sidekiq', '~> 6.0.0'
+gem "rufus-scheduler", "~> 3.8.1"
 
 # Use Sass to process CSS
 # gem "sassc-rails"
