@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Quote < ApplicationRecord
   has_many :alerts, dependent: :destroy
   belongs_to :asset
