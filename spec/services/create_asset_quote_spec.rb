@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CreateAssetQuote do
   describe '.call' do
     context 'when asset exists' do
       context 'and is found' do
-        let(:asset) { Asset.create( symbol: 'PETR4', currency: 'BRL') }
-        
+        let(:asset) { Asset.create(symbol: 'PETR4', currency: 'BRL') }
+
         it 'creates new quote' do
           expect { described_class.call(asset.symbol) }.to change(Quote, :count).by(1)
         end
       end
-      
+
       context 'and is not found' do
         let(:asset) { Asset.create(symbol: 'ZXCV', currency: 'BRL') }
 

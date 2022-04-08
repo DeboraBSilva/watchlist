@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'httparty'
 
@@ -11,16 +13,17 @@ class FetchAssetQuote < ApplicationService
   def call
     asset_value
   end
-  
+
   private
 
   def asset_value
     document = Nokogiri::HTML.parse(HTTParty.get("#{SOURCE_URL_FOR_QUOTES}#{@asset_symbol}").body)
-      .css('div.special')
+                             .css('div.special')
     currency = document.css('span.icon').map(&:text).first
     value = document.css('strong.value').text
     response = "#{currency} #{value}"
-    raise "Asset not found" if response.blank?
+    raise 'Asset not found' if response.blank?
+
     response
   end
 end
