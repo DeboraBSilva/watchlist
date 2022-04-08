@@ -3,7 +3,8 @@
 class UpdateQuotes < ApplicationService
   def call
     Asset.all.each do |asset|
-      UpdateAssetQuoteWorker.perform_async(asset.symbol)
+      priority = WalletItem.find_by(asset: asset) ? :high : :default
+      UpdateAssetQuoteWorker.set(queue: priority).perform_async(asset.symbol)
     end
   end
 end
