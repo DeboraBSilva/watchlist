@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'sidekiq/testing'
 
 RSpec.describe UpdateAssetQuoteWorker, type: :worker do
-  before do
-    Sidekiq::Testing.fake!
-  end
-
   describe '.call' do
     let(:asset) { Asset.create(symbol: 'PETR4', currency: 'BRL') }
 
